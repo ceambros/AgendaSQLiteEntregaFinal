@@ -42,16 +42,18 @@ public class CadastroActivity extends AppCompatActivity {
             String nome = ((EditText) findViewById(R.id.editTextNome)).getText().toString();
             String fone = ((EditText) findViewById(R.id.editTextFone)).getText().toString();
             String email = ((EditText) findViewById(R.id.editTextEmail)).getText().toString();
-            int favorito = ((Switch) findViewById(R.id.escolhaFavorito)).isChecked() ? 1 : 0 ;
+            int favorito = ((Switch) findViewById(R.id.escolhaFavorito)).isChecked() ? 1 : 0;
+            String fone2 = ((EditText) findViewById(R.id.editTextFone2)).getText().toString();
+            String dataNascimento = ((EditText) findViewById(R.id.editTextDataNascimento)).getText().toString();
 
-            Contato c = new Contato(nome,fone,email,favorito);
+            Contato c = new Contato(nome, fone, email, favorito, fone2, dataNascimento);
 
             int idContato = (int) dao.incluirContato(c);
             c.setId(idContato);
 
             MainActivity.adapter.adicionaContatoAdapter(c);
 
-            Toast.makeText(getApplicationContext(),"Contato inserido",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Contato inserido", Toast.LENGTH_LONG).show();
 
             finish();
 
@@ -60,7 +62,6 @@ public class CadastroActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }

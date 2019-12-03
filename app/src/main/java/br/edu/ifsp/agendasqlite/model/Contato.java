@@ -8,16 +8,20 @@ public class Contato implements Serializable {
     private String nome;
     private String fone;
     private String email;
+    private String fone2;
     private int favorito;
+    private String dataNascimento;
 
     public Contato() {
     }
 
-    public Contato(String nome, String fone, String email, int favorito) {
+    public Contato(String nome, String fone, String email, int favorito, String fone2, String dataNascimento) {
         this.nome = nome;
         this.fone = fone;
         this.email = email;
         this.favorito = favorito;
+        this.fone2 = fone2;
+        this.dataNascimento = dataNascimento;
     }
 
 
@@ -69,5 +73,21 @@ public class Contato implements Serializable {
 
     public void setFavorito(int favorito) {
         this.favorito = favorito;
+    }
+
+    public String getFone2() {
+        return fone2;
+    }
+
+    public void setFone2(String fone2) {
+        this.fone2 = fone2;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }
