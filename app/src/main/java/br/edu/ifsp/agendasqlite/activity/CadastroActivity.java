@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import br.edu.ifsp.agendasqlite.R;
@@ -41,8 +42,9 @@ public class CadastroActivity extends AppCompatActivity {
             String nome = ((EditText) findViewById(R.id.editTextNome)).getText().toString();
             String fone = ((EditText) findViewById(R.id.editTextFone)).getText().toString();
             String email = ((EditText) findViewById(R.id.editTextEmail)).getText().toString();
+            int favorito = ((Switch) findViewById(R.id.escolhaFavorito)).isChecked() ? 1 : 0 ;
 
-            Contato c = new Contato(nome,fone,email);
+            Contato c = new Contato(nome,fone,email,favorito);
 
             int idContato = (int) dao.incluirContato(c);
             c.setId(idContato);
