@@ -36,6 +36,9 @@ public class DetalheActivity extends AppCompatActivity {
             EditText email = findViewById(R.id.editTextEmail);
             email.setText(c.getEmail());
 
+            Switch favorito  = findViewById(R.id.escolhaFavorito);
+            favorito.setChecked( c.getFavorito() == 1 );
+
         }
 
 
