@@ -23,11 +23,15 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="4c6b1577-f3ec-4b35-a729-13958fc2996e">
+        <schema name="main" object-types="view, table" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4c6b1577-f3ec-4b35-a729-13958fc2996e">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from contatos]]></console>
+      <console name="Connection" type="STANDARD" schema="main" session="Main">select * from contatos</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

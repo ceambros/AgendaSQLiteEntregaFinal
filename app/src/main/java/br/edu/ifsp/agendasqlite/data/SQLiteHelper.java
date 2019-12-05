@@ -45,9 +45,9 @@ class SQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         System.out.println("-------------------------------------------------------------");
         db.execSQL(CREATE_TABLE);
-        //db.execSQL(UPGRADE_VERSION_2);
-        //db.execSQL(UPGRADE_VERSION_3);
-        //db.execSQL(UPGRADE_VERSION_4);
+        db.execSQL(UPGRADE_VERSION_2);
+        db.execSQL(UPGRADE_VERSION_3);
+        db.execSQL(UPGRADE_VERSION_4);
     }
 
     @Override
