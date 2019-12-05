@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         contatos = dao.listaContatos();
 
-        adapter = new ContatoAdapter(contatos);
+        adapter = new ContatoAdapter(contatos, dao);
 
         recyclerView.setAdapter(adapter);
 

@@ -8,6 +8,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ public class ContatoAdapter
 
     static List<Contato> contatos;
     List<Contato> contactListFiltered;
+    private ContatoDAO dao;
 
     private static ItemClickListener clickListener;
 
@@ -70,9 +72,10 @@ public class ContatoAdapter
 
     }
 
-    public ContatoAdapter(List<Contato> contatos) {
+    public ContatoAdapter(List<Contato> contatos, ContatoDAO dao) {
         this.contatos = contatos;
         contactListFiltered = contatos;
+        this.dao = dao;
     }
 
     @NonNull
@@ -85,8 +88,12 @@ public class ContatoAdapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContatoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ContatoViewHolder holder, final int position) {
+
+        final Contato c = contactListFiltered.get(position);
         holder.nome.setText(contactListFiltered.get(position).getNome());
+
+        holder.imgFavorito.setOnClickListener(new AlterarFavorito(c));
 
         if (contactListFiltered.get(position).getFavorito() == 1) {
             holder.imgFavorito.setImageResource(R.drawable.star_on);
@@ -137,6 +144,7 @@ public class ContatoAdapter
     public class ContatoViewHolder
             extends RecyclerView.ViewHolder
             implements View.OnClickListener {
+
         final TextView nome;
         final ImageView imgFavorito;
 
@@ -159,5 +167,30 @@ public class ContatoAdapter
         void onItemClick(int position);
     }
 
+
+    public class AlterarFavorito implements View.OnClickListener {
+
+        Contato c;
+
+        public AlterarFavorito(Contato c) {
+            this.c = c;
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            if(c.getFavorito()==1) {
+                c.setFavorito(0);
+            }
+            else{
+                c.setFavorito(1);
+            }
+
+            //Altera o banco de dados.
+            dao.alterarContato(c);
+
+            notifyDataSetChanged();
+        }
+    }
 
 }
