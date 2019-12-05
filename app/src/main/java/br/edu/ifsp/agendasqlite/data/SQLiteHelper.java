@@ -43,17 +43,46 @@ class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        System.out.println("-------------------------------------------------------------");
         db.execSQL(CREATE_TABLE);
+        //db.execSQL(UPGRADE_VERSION_2);
+        //db.execSQL(UPGRADE_VERSION_3);
+        //db.execSQL(UPGRADE_VERSION_4);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion == 1) {
+        System.out.println("************************************************ " + oldVersion + " - " + newVersion);
+
+        for (int i = oldVersion + 1; i <= newVersion; i++) {
+            switch (i) {
+                case 2:
+                    System.out.println("************************************************ " + i);
+                    db.execSQL(UPGRADE_VERSION_2);
+                    break;
+                case 3:
+                    System.out.println("************************************************ " + i);
+                    db.execSQL(UPGRADE_VERSION_3);
+                    break;
+                case 4:
+                    System.out.println("************************************************ " + i);
+                    db.execSQL(UPGRADE_VERSION_4);
+                    break;
+            }
+        }
+
+        /*
+        if (newVersion == 2) {
             db.execSQL(UPGRADE_VERSION_2);
-        } else if (oldVersion == 2) {
+        } else if (newVersion == 2) {
+            db.execSQL(UPGRADE_VERSION_2);
             db.execSQL(UPGRADE_VERSION_3);
-        } else if (oldVersion == 3) {
+        } else if (newVersion == 4) {
+            db.execSQL(UPGRADE_VERSION_2);
+            db.execSQL(UPGRADE_VERSION_3);
             db.execSQL(UPGRADE_VERSION_4);
         }
+        */
+
     }
 }
