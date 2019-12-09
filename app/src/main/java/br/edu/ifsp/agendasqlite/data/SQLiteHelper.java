@@ -70,19 +70,5 @@ class SQLiteHelper extends SQLiteOpenHelper {
                     break;
             }
         }
-
-        /*
-        if (newVersion == 2) {
-            db.execSQL(UPGRADE_VERSION_2);
-        } else if (newVersion == 2) {
-            db.execSQL(UPGRADE_VERSION_2);
-            db.execSQL(UPGRADE_VERSION_3);
-        } else if (newVersion == 4) {
-            db.execSQL(UPGRADE_VERSION_2);
-            db.execSQL(UPGRADE_VERSION_3);
-            db.execSQL(UPGRADE_VERSION_4);
-        }
-        */
-
     }
 }
